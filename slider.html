@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Slider</title>
+	<style type="text/css">
+	
+	@keyframes ani{
+		0%{
+			opacity: 0;
+		}
+		33%{
+			opacity: 1;
+		}
+		66%{
+			opacity: 1;
+		}
+		100%{
+			opacity: 0;
+		}
+		/*to{
+			opacity: 1;
+			visibility: visible;
+		}*/
+	}
+
+	.slide{
+		opacity: 0;
+		position: fixed;
+		animation-duration: 4s;
+		/*animation-name: ani2;
+		animation-iteration-count: infinite;*/
+	}
+	
+	#carrusel > button{
+		margin-top: 160px;
+		margin-left: 100px;
+	}
+
+
+	</style>
+
+	<script type="text/javascript">
+	var nSlide=0;
+
+	function nextSlide(){
+		if(nSlide > 0){
+			var anterior=document.getElementById("s"+nSlide);
+			anterior.style.animationName="";
+				
+		}
+		if(nSlide==4){
+			nSlide=0;
+		}
+		nSlide++;
+		var slide=document.getElementById("s"+nSlide);
+		slide.style.animationName="ani";
+	}
+
+	function prevSlide(){
+		if (nSlide>0) {
+			var anterior=document.getElementById("s"+nSlide);
+			anterior.style.animationName="";
+		}
+		if (nSlide==1) {
+			nSlide=5;
+		}
+		nSlide--;
+		if (nSlide==-1) {
+			nSlide=4;
+		}
+		var slide=document.getElementById("s"+nSlide);
+		slide.style.animationName="ani";
+	}
+
+	window.onload=function(){
+		setInterval(nextSlide,4000);
+	}
+
+	</script>
+</head>
+<body>
+<div id="carrusel">
+	<div class="slide" id="s1">
+		<img src="s1.jpg" />
+	</div>
+	<div class="slide" id="s2">
+		<img src="s2.jpg" />
+	</div>
+	<div class="slide" id="s3">
+		<img src="s3.jpg" />
+	</div>
+	<div class="slide" id="s4">
+		<img src="s4.jpg" />
+	</div>
+	<button onclick="prevSlide()"> < </button>
+	<button onclick="nextSlide()"> > </button>
+</div>
+
+</body>
+</html>
