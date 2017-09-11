@@ -1,0 +1,25 @@
+body{
+	display: inline-flex;
+}
+#laterales{
+	width: 200px;
+	height: -webkit-fill-available;
+	background-color: sienna;
+	display: inline-flex;
+}
+
+#principal{
+	display: inline-flex;
+	background-color: burlywood;
+	width: 950px;
+	height: -webkit-fill-available;
+	border-left-style: double;
+}
+#lateralD{
+	width: 200px;
+	height: -webkit-fill-available;
+	background-color: sienna;
+	display: inline-flex;
+	align-self: right;
+	border-left-style: double;
+}
