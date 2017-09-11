@@ -1,5 +1,16 @@
 body{
 	display: inline-flex;
+	vertical-align: center;
+	text-align: center;
+}
+
+button{
+	display: block;
+	text-align: center;
+	width: max-content;
+	height: 50px;
+	margin-top: 100px;
+	margin-left: 350px;
 }
 #laterales{
 	width: 200px;
@@ -9,7 +20,7 @@ body{
 }
 
 #principal{
-	display: inline-flex;
+	display: block;
 	background-color: burlywood;
 	width: 950px;
 	height: -webkit-fill-available;
