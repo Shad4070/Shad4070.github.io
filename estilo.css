@@ -12,6 +12,24 @@ button{
 	margin-top: 70px;
 	margin-left: 450px;
 }
+
+button.insertar{
+	display: initial;
+	margin-top: unset;
+	margin-left: unset;
+}
+
+textarea{
+	display: block;
+}
+
+#divInsertar{
+	display: grid;
+	background-color: burlywood;
+	width: 950px;
+	height: -webkit-fill-available;
+	border-left-style: double;
+}
 #laterales{
 	width: 200px;
 	height: -webkit-fill-available;
