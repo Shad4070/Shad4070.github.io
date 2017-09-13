@@ -18,6 +18,11 @@ button.insertar{
 	margin-top: unset;
 	margin-left: unset;
 }
+button.buscar{
+	display: initial;
+	margin-top: unset;
+	margin-left: unset;
+}
 
 textarea{
 	display: block;
@@ -30,11 +35,22 @@ textarea{
 	height: -webkit-fill-available;
 	border-left-style: double;
 }
+#divBuscar{
+	display: grid;
+	background-color: burlywood;
+	width: 950px;
+	height: -webkit-fill-available;
+	border-left-style: double;
+}
 #laterales{
 	width: 200px;
 	height: -webkit-fill-available;
 	background-color: sienna;
 	display: inline-flex;
+}
+th,td{
+	border: 1px solid black;
+	background-color: white;
 }
 
 #principal{
