@@ -32,7 +32,7 @@ textarea{
 }
 #laterales{
 	width: 200px;
-	height: -webkit-fill-available;
+	height: auto;
 	background-color: sienna;
 	display: inline-flex;
 }
@@ -46,9 +46,8 @@ textarea{
 }
 #lateralD{
 	width: 200px;
-	height: -webkit-fill-available;
+	height: auto;
 	background-color: sienna;
 	display: inline-flex;
-	align-self: right;
 	border-left-style: double;
 }
