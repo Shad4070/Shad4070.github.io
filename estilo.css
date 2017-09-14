@@ -7,10 +7,11 @@ body{
 button{
 	display: block;
 	text-align: center;
-	width: 80px;
+	font-size:25px;
+	width: 300px;
 	height: max-content;
 	margin-top: 70px;
-	margin-left: 450px;
+	margin-left: 400px;
 }
 
 button.insertar{
@@ -26,6 +27,8 @@ button.buscar{
 
 textarea{
 	display: block;
+	font-size:18px;
+	height:50px;
 }
 
 #divInsertar{
@@ -36,6 +39,21 @@ textarea{
 	border-left-style: double;
 }
 #divBuscar{
+	display: grid;
+	background-color: burlywood;
+	width: 950px;
+	height: -webkit-fill-available;
+	border-left-style: double;
+}
+#Vender{
+	display: grid;
+	background-color: burlywood;
+	width: 950px;
+	height: -webkit-fill-available;
+	border-left-style: double;
+}
+
+#VentaCliente{
 	display: grid;
 	background-color: burlywood;
 	width: 950px;
@@ -66,4 +84,8 @@ th,td{
 	background-color: sienna;
 	display: inline-flex;
 	border-left-style: double;
+}
+
+.Titulos{
+	font-size:25px;
 }
