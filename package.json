@@ -4,7 +4,8 @@
   "description": "proyecto",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  	"start":"open index.html",
+    "test": "open index.html"
   },
   "repository": {
     "type": "git",
