@@ -4,8 +4,8 @@
   "description": "proyecto",
   "main": "index.html",
   "scripts": {
-  	"start":"open index.html",
-    "test": "open index.html"
+  	"start":"start index.html",
+    "test": "start index.html"
   },
   "repository": {
     "type": "git",
