@@ -2,10 +2,9 @@
   "name": "proyectocafetero",
   "version": "1.0.0",
   "description": "proyecto",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
-    "start": "node index.js",
-    "test": "node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
