@@ -4,13 +4,13 @@
   "description": "proyecto",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Shad4070/Shad4070.github.io.git"
   },
-  "author": "Shad",
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Shad4070/Shad4070.github.io/issues"
