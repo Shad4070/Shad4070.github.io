@@ -7,7 +7,7 @@ app.use(express.static(__dirname + '/public'));
 
 // views is directory for all template files
 app.get("/", function(request, response) {
-response.render(‘pages/index’);
+response.render("pages/index");
 });
 
 app.get("/", function(request, response) {
