@@ -7,15 +7,28 @@
 		function Insertar(){
 			location.href="insertar.html"
 		}
+		function Buscar(){
+			location.href="buscar.html"
+		}
+		function Vender(){
+			location.href="vender.html"
+		}
+		function ventaCliente(){
+			location.href="VentaCliente.html"
+		}
+		function alerta(){
+			alert("Oscar Rios Tabares - Alejandro Madrid - Luis Felipe Lopez")
+		}
 	</script>
 </head>
 <body>
 	<div id="laterales">.</div>
 	<div id="principal">
 		<button onclick="Insertar()">Insertar</button>		
-		<button>Buscar</button>
-		<button>Vender</button>
-		<button>Buscar ventas por cliente</button>
+		<button onclick="Buscar()">Buscar</button>
+		<button onclick="Vender()">Vender</button>
+		<button onclick="ventaCliente()">Buscar ventas por cliente</button>
+		<button id="acerca" onclick="alerta()">Acerca de...</button>
 	</div>
 	<div id="lateralD">.</div>
 </body>

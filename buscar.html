@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Buscar</title>
+	<link rel="stylesheet" type="text/css" href="estilo.css">
+	<script type="text/javascript">
+		function Volver(){
+			location.href="index.html";
+		}
+	</script>
+</head>
+<body>
+	<div id="laterales">.</div>
+	<div id="divBuscar">
+
+		<div class="Titulos"> Buscar producto </div>
+		<textarea name="nomBus" placeholder="Nombre del producto"></textarea>
+		<button class="buscar" onclick="Volver()">Buscar</button>
+
+		<div class="Titulos"> Buscar por codigo </div>
+		<textarea name="codBus" placeholder="Codigo del producto"></textarea>
+		<button class="buscar" onclick="Volver()">Buscar</button>
+
+		<div class="Titulos"> Buscar por categoria </div>
+		
+		<select>
+			<option value="cat1">Categoria 1</option>
+			<option value="cat2">Categoria 2</option>
+			<option value="cat3">Categoria 3</option>
+			<option value="cat4">Categoria 4</option>
+		</select>
+		<button class="buscar" onclick="Volver()">Buscar</button>
+	
+				<table style="width:100%">
+			  <tr>
+			    <th>Nombre</th>
+			    <th>Cantidad</th> 
+			    <th>Categoria</th>
+			    <th>Precio</th>
+			  </tr>
+			  <tr>
+			    <td>Resultado</td>
+			    <td>cantidad</td>
+			    <td>Categoria 1</td>
+			    <td>0$</td>
+			  </tr>
+		</table>
+
+	</div>
+	<div id="lateralD">.</div>
+</body>
+</html>
