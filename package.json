@@ -1,0 +1,19 @@
+{
+  "name": "proyectocafetero",
+  "version": "1.0.0",
+  "description": "proyecto base",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shad4070/Shad4070.github.io.git"
+  },
+  "author": "Shad",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shad4070/Shad4070.github.io/issues"
+  },
+  "homepage": "https://github.com/Shad4070/Shad4070.github.io#readme"
+}
