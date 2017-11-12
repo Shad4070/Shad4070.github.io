@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>www.login.com</title>
+	<meta charset="utf-8">
+
+	<style type="text/css">
+       
+	</style>
+
+	<script type="text/javascript">
+		function guardar() {
+			var usuario = {};
+			usuario.user = document.getElementById('txt_user').value;
+			usuario.contraseña = document.getElementById('txt_password').value;
+			usuario.email = document.getElementById('txt_email').value;
+			//console.log(JSON.stringify([user, contraseña,email]));
+			return usuario;
+		}
+		function registrar() {
+
+			if (datos()){
+				console.log("el usuario ya existe");
+				alert("el usuario ya existe")
+
+			}
+			else{
+			var user = guardar();
+
+			var serializado = "";
+			serializado = JSON.stringify(user);
+
+			var request = new XMLHttpRequest();
+
+			request.open("POST","/registro",false);
+			request.send(serializado);
+			// body...
+			console.log("completado correctamente");
+		   }
+		}
+
+		function cargarDatos() {
+	      var xml = new XMLHttpRequest();
+	      xml.open("GET","/usuarios",false);
+	      xml.send( );
+	      var respuesta = xml.responseText;
+          console.log(respuesta);
+          return JSON.parse(respuesta);
+		}
+
+		function datos() {
+			var dato = cargarDatos();
+			console.log(dato);
+			var loginn= guardar();
+			var bandera = false;
+			for (var i = 0; i < dato.length; i++){
+				var nombre = dato[i].user;
+				console.log(nombre);
+				if (nombre == loginn.user) {
+					bandera = true;
+				}
+			}
+			return bandera;
+		}
+	</script>
+</head>
+<body>
+ <h1>Loggin</h1>
+ <p><label>user</label>
+ <input type="text" id="txt_user">
+ </p>
+ <p><label>password</label>
+ <input type="password" id="txt_password">
+ </p>
+ <p>
+ 	<label>email</label>
+ 	<input type="text" id="txt_email">
+ </p>
+ <button onclick="registrar()">ingresar</button>
+</body>
+</html>

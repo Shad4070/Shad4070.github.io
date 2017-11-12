@@ -7,6 +7,63 @@
 		function Volver(){
 			location.href="index.html";
 		}
+
+		function guardar() {
+			var usuario = {};
+			usuario.codigo = document.getElementById('codInser').value;
+			usuario.nombre = document.getElementById('nomInser').value;
+			usuario.precio = document.getElementById('precInser').value;
+			usuario.categoria=document.getElementById('cateInser').value;
+			usuario.canti=document.getElementById('cantInser').value;
+			//console.log(JSON.stringify([user, contraseña,email]));
+			return usuario;
+		}
+		function registrar() {
+
+			if (datos()){
+				console.log("el usuario ya existe");
+				alert("el usuario ya existe")
+
+			}
+			else{
+			var user = guardar();
+
+			var serializado = "";
+			serializado = JSON.stringify(user);
+
+			var request = new XMLHttpRequest();
+
+			request.open("POST","/inser",false);
+			request.send(serializado);
+			// body...
+			console.log("completado correctamente");
+		   }
+		}
+
+		function cargarDatos() {
+	      var xml = new XMLHttpRequest();
+	      xml.open("GET","/productos",false);
+	      xml.send( );
+	      var respuesta = xml.responseText;
+          console.log(respuesta);
+          return JSON.parse(respuesta);
+		}
+
+		function datos() {
+			var dato = cargarDatos();
+			console.log(dato);
+			var loginn= guardar();
+			var bandera = false;
+			for (var i = 0; i < dato.length; i++){
+				var nombre = dato[i].codigo;
+				console.log(nombre);
+				if (nombre == loginn.codigo) {
+					bandera = true;
+				}
+			}
+			return bandera;
+		}
+		
 	</script>
 
 <style>
@@ -20,12 +77,12 @@
 <div id="laterales">.</div>
 <div id="divInsertar">
 		Ingresar productos
-		<textarea name="codInser" placeholder="Codigo del producto"></textarea>
-		<textarea name="nomInser" placeholder="Nombre del producto"></textarea>
-		<textarea name="precInser" placeholder="Precio del producto"></textarea>
-		<textarea name="cateInser" placeholder="Categoria del producto"></textarea>
-		<textarea name="codInser" placeholder="Cantidad del producto"></textarea>
-		<button class="insertar" onclick="Volver()">Agregar</button>
+		<input type="text" id="codInser" placeholder="Codigo del Producto">
+		<input type="text" id="nomInser" placeholder="Nombre del producto">
+		<input type="text" id="precInser" placeholder="Precio del producto">
+		<input type="text" id="cateInser" placeholder="Categoria del producto">
+		<input type="text" id="cantInser" placeholder="Cantidad del producto">
+		<button class="insertar" onclick="registrar()">Agregar</button>
 		Ingresar Categoria
 		<textarea name="nomCat" placeholder="Nombre de Categoria"></textarea>
 		<textarea name="codCat" placeholder="Codigo de Categoria"></textarea>
