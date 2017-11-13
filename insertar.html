@@ -2,12 +2,13 @@
 <html>
 <head>
 	<title>Insertar</title>
+	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="estilo.css">
 	<script type="text/javascript">
 		function Volver(){
 			location.href="index.html";
 		}
-
+		//Insertar Producto
 		function guardar() {
 			var usuario = {};
 			usuario.codigo = document.getElementById('codInser').value;
@@ -21,8 +22,8 @@
 		function registrar() {
 
 			if (datos()){
-				console.log("el usuario ya existe");
-				alert("el usuario ya existe")
+				console.log("el producto ya existe");
+				alert("El producto ya existe")
 
 			}
 			else{
@@ -36,7 +37,8 @@
 			request.open("POST","/inser",false);
 			request.send(serializado);
 			// body...
-			console.log("completado correctamente");
+			alert("Completado correctamente");
+			Volver();
 		   }
 		}
 
@@ -63,6 +65,61 @@
 			}
 			return bandera;
 		}
+
+		//Insertar categoria
+		function guardarCat() {
+			var usuario = {};
+			usuario.nombre = document.getElementById('nomCat').value;
+			usuario.codC = document.getElementById('codCat').value;
+			//console.log(JSON.stringify([user, contraseña,email]));
+			return usuario;
+		}
+		function registrarCate() {
+
+			if (datosCat()){
+				console.log("La Categoria ya existe");
+				alert("La Categoria ya existe")
+
+			}
+			else{
+			var user = guardarCat();
+
+			var serializado = "";
+			serializado = JSON.stringify(user);
+
+			var request = new XMLHttpRequest();
+
+			request.open("POST","/inserCat",false);
+			request.send(serializado);
+			// body...
+			alert("Completado correctamente");
+			Volver();
+		   }
+		}
+
+		function cargarDatosCat() {
+	      var xml = new XMLHttpRequest();
+	      xml.open("GET","/categor",false);
+	      xml.send( );
+	      var respuesta = xml.responseText;
+          console.log(respuesta);
+          return JSON.parse(respuesta);
+		}
+
+		function datosCat() {
+			var dato = cargarDatosCat();
+			console.log(dato);
+			var loginn= guardarCat();
+			var bandera = false;
+			for (var i = 0; i < dato.length; i++){
+				var nombre = dato[i].codC;
+				console.log(nombre);
+				if (nombre == loginn.codC) {
+					bandera = true;
+				}
+			}
+			return bandera;
+		}
 		
 	</script>
 
@@ -84,9 +141,9 @@
 		<input type="text" id="cantInser" placeholder="Cantidad del producto">
 		<button class="insertar" onclick="registrar()">Agregar</button>
 		Ingresar Categoria
-		<textarea name="nomCat" placeholder="Nombre de Categoria"></textarea>
-		<textarea name="codCat" placeholder="Codigo de Categoria"></textarea>
-		<button class="insertar" onclick="Volver()">Agregar</button>
+		<input id="nomCat" placeholder="Nombre de Categoria">
+		<input id="codCat" placeholder="Codigo de Categoria">
+		<button class="insertar" onclick="registrarCate()">Agregar</button>
 		Actualizar Inventario
 		<textarea name="codAct" placeholder="Codigo"></textarea>
 		<textarea name="cantidad" placeholder="Cantidad"></textarea>

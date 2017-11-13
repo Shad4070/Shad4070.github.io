@@ -21,6 +21,10 @@ function atenderServidor( request, response ){
 		insertarVista(request,response);
 	}else if(request.url=="/inser"){
 		insertar(request, response);
+	}else if(request.url=="/categor"){
+		cosasCatego(request, response);
+	}else if(request.url=="/inserCat"){
+		inserCat(request, response);
 	}
 	else {
 		retornarArchivo( request, response );
@@ -30,12 +34,13 @@ function atenderServidor( request, response ){
 
 var usuarios = [];
 var productos=[];
+var categorias=[];
 
 var s = fs.readFile("productos.json",cargarUsuario);
+var a=fs.readFile("categoria.json",cargarUsuario);
 
 function insertar(request, response){
 	request.on("data",recibir);
-	console.log("entro1");
 	//callback
 	function recibir(data){
 		var pro=JSON.parse(data);
@@ -45,10 +50,21 @@ function insertar(request, response){
 	}
 }
 
+function inserCat(request, response){
+	request.on("data",recibir);
+	//callback
+	function recibir(data){
+		var cat=JSON.parse(data);
+		categorias.push(cat);
+		fs.writeFile("categoria.json", JSON.stringify(categorias), null);
+		response.end("Agregado correctamente");
+	}
+}
+
 function cargarUsuario(error,data) {
 	if (error == null) {
 		usuarios = JSON.parse(data);
-		console.log("Los usuarios registrados son: ");
+		console.log("Los items registrados son: ");
 		console.log(usuarios);
 	}else{
 		console.log(error);
@@ -100,6 +116,21 @@ function lasCosas(request, response){
 		}
   	}
 }
+
+function cosasCatego(request, response){
+	fs.readFile(".\\"+"categoria.json", archivoListo);
+  
+ 	 function archivoListo( error, data ){
+		if( error == null ){
+			response.write( data );
+			response.end();
+		} else {
+			console.log( error );
+			response.end( error.toString() );
+		}
+  	}
+}
+
 function estilo(request,response) {
 	/*fs.readFile(".\\"+'productos.json', archivoListo );
   
