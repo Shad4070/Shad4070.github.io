@@ -33,11 +33,61 @@ function atenderServidor( request, response ){
 //Vector que va a almacenar los usuarios registrados
 
 var usuarios = [];
+var auxusers=[];
 var productos=[];
 var categorias=[];
 
+
+
 var s = fs.readFile("productos.json",cargarUsuario);
 var a=fs.readFile("categoria.json",cargarUsuario);
+
+//alejandro
+function crearUsuario(request,response){
+	var existe = usuarioExiste();
+	
+	if(existe == false){
+		request.on("data",recibir);
+		
+		function recibir(data){
+			var pro=JSON.parse(data);
+			auxusers.push(pro);
+			fs.writeFile("nuevousuario.json", JSON.stringify(auxusers),null);
+			response.end("Usuario registrado correctamente");
+			
+		}
+		
+	}else{
+		alert("el usuario ya existe");
+	}
+}
+
+//alejandro
+function verificarUsuario(req,res){
+	req.on('data',datosListos);
+	function datosListos(content){
+		var usr=JSON.parse(content);
+		if(usuarioExiste(usr.email,usr.clave)){
+			res.writeHead(200,{ 'content-type ': 'text/html'});
+			res.end( "usuario correcto");
+		}else{
+			res.writeHead(401, { 'content-type': 'text/html' });
+			res.end( "Usuario incorrecto" );
+		}
+	}
+}
+
+//alejandro
+function usuarioExiste(archivo,nombr,clave){
+	archivo=fs.readFile("nuevousuario.json",cargarUsuario);
+	for(var i=0, i < archivo.length;i++){
+		if(archivo[i].usuario == nombr && archivo[i].clave == clave){
+			return true;
+		}
+	}
+	return false;
+}
+
 
 function insertar(request, response){
 	request.on("data",recibir);
@@ -103,6 +153,22 @@ function retornarArchivo( request, response ){
   }
 }
 
+//alejandro
+function users(request,response){
+	fs.readFile(__dirname+"/nuevousuario.json", archivoListo);
+  
+ 	 function archivoListo( error, data ){
+		if( error == null ){
+			response.write( data );
+			response.end();
+		} else {
+			console.log( error );
+			response.end( error.toString() );
+		}
+  	}
+}
+
+
 function lasCosas(request, response){
 	fs.readFile(__dirname+"/productos.json", archivoListo);
   
@@ -154,6 +220,21 @@ function estilo(request,response) {
   	}
   }
 
+}
+
+//alejandro
+function insertarUsuario(request,reponse){
+	fs.readFile(__dirname,"/registrarUsuario.html",indice){
+		function indice(error,data){
+			if(error==null){
+				response.write(data);
+				response.end();
+			}else{
+				console.log(error);
+				response.end(error.toString());
+			}
+		}
+	}
 }
 
 function insertarVista(request, response){

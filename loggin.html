@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>www.login.com</title>
+	<title>el cafetero</title>
+	<link rel="stylesheet" type="text/css" href="estilo.css">
 	<meta charset="utf-8">
 
 	<style type="text/css">
@@ -10,12 +11,12 @@
 
 	<script type="text/javascript">
 		function guardar() {
-			var usuario = {};
-			usuario.user = document.getElementById('txt_user').value;
-			usuario.contraseña = document.getElementById('txt_password').value;
-			usuario.email = document.getElementById('txt_email').value;
+			var usuarios = {};
+			usuarios.usuario = document.getElementById('txt_user').value;
+			usuarios.contraseña = document.getElementById('txt_password').value;
+			usuarios.email = document.getElementById('txt_email').value;
 			//console.log(JSON.stringify([user, contraseña,email]));
-			return usuario;
+			return usuarios;
 		}
 		function registrar() {
 
@@ -65,17 +66,22 @@
 	</script>
 </head>
 <body>
- <h1>Loggin</h1>
- <p><label>user</label>
- <input type="text" id="txt_user">
- </p>
- <p><label>password</label>
- <input type="password" id="txt_password">
- </p>
- <p>
- 	<label>email</label>
- 	<input type="text" id="txt_email">
- </p>
- <button onclick="registrar()">ingresar</button>
+
+ <div id="laterales">.</div>
+ <div id="loggin">
+	 <h1>Loggin</h1>
+	 <p><label>usuario:</label>
+	 <input type="text" id="txt_user">
+	 </p>
+	 <p><label>contraseña:</label>
+	 <input type="password" id="txt_password">
+	 </p>
+	 <p>
+		<label>email:</label>
+		<input type="text" id="txt_email">
+	 </p>
+	 <button onclick="registrar()">ingresar</button>
+ </div>
+ <div id=lateralD"></div>
 </body>
 </html>
