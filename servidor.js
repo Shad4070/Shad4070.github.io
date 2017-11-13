@@ -90,7 +90,7 @@ function guardarRegistro(request, response) {
 
 
 function retornarArchivo( request, response ){
-  fs.readFile(__dirname+'index.html', archivoListo );
+  fs.readFile(__dirname+'/index.html', archivoListo );
   
   function archivoListo( error, data ){
 	if( error == null ){
@@ -104,7 +104,7 @@ function retornarArchivo( request, response ){
 }
 
 function lasCosas(request, response){
-	fs.readFile(__dirname+"productos.json", archivoListo);
+	fs.readFile(__dirname+"/productos.json", archivoListo);
   
  	 function archivoListo( error, data ){
 		if( error == null ){
@@ -118,7 +118,7 @@ function lasCosas(request, response){
 }
 
 function cosasCatego(request, response){
-	fs.readFile(__dirname+"categoria.json", archivoListo);
+	fs.readFile(__dirname+"/categoria.json", archivoListo);
   
  	 function archivoListo( error, data ){
 		if( error == null ){
@@ -143,7 +143,7 @@ function estilo(request,response) {
 		response.end( error.toString() );
 	}
   }*/
-  fs.readFile(__dirname+"estilo.css", indice);
+  fs.readFile(__dirname+"/estilo.css", indice);
   function indice(error, data){
   	if(error==null){
   		response.write(data);
@@ -157,7 +157,7 @@ function estilo(request,response) {
 }
 
 function insertarVista(request, response){
-  	fs.readFile(__dirname+"insertar.html", indice);
+  	fs.readFile(__dirname+"/insertar.html", indice);
   	function indice(error, data){
   		if(error==null){
   			response.write(data);
