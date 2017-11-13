@@ -7,7 +7,7 @@ var server = http.createServer( atenderServidor );
 console.log( "Servidor iniciado" );
 
 // Iniciar la escucha del servidor en el puero 8088
-server.listen( 8088 );
+server.listen( process.env.PORT || 8080);
 
 //   CoffeeScript o TypeScript
 function atenderServidor( request, response ){
@@ -90,7 +90,7 @@ function guardarRegistro(request, response) {
 
 
 function retornarArchivo( request, response ){
-  fs.readFile(".\\"+'index.html', archivoListo );
+  fs.readFile(__dirname+'index.html', archivoListo );
   
   function archivoListo( error, data ){
 	if( error == null ){
@@ -104,7 +104,7 @@ function retornarArchivo( request, response ){
 }
 
 function lasCosas(request, response){
-	fs.readFile(".\\"+"productos.json", archivoListo);
+	fs.readFile(__dirname+"productos.json", archivoListo);
   
  	 function archivoListo( error, data ){
 		if( error == null ){
@@ -118,7 +118,7 @@ function lasCosas(request, response){
 }
 
 function cosasCatego(request, response){
-	fs.readFile(".\\"+"categoria.json", archivoListo);
+	fs.readFile(__dirname+"categoria.json", archivoListo);
   
  	 function archivoListo( error, data ){
 		if( error == null ){
@@ -132,7 +132,7 @@ function cosasCatego(request, response){
 }
 
 function estilo(request,response) {
-	/*fs.readFile(".\\"+'productos.json', archivoListo );
+	/*fs.readFile(__dirname+'productos.json', archivoListo );
   
   function archivoListo( error, data ){
 	if( error == null ){
@@ -143,7 +143,7 @@ function estilo(request,response) {
 		response.end( error.toString() );
 	}
   }*/
-  fs.readFile(".\\"+"estilo.css", indice);
+  fs.readFile(__dirname+"estilo.css", indice);
   function indice(error, data){
   	if(error==null){
   		response.write(data);
@@ -157,7 +157,7 @@ function estilo(request,response) {
 }
 
 function insertarVista(request, response){
-  	fs.readFile(".\\"+"insertar.html", indice);
+  	fs.readFile(__dirname+"insertar.html", indice);
   	function indice(error, data){
   		if(error==null){
   			response.write(data);
