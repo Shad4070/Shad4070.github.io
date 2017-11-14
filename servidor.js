@@ -10,6 +10,7 @@ console.log( "Servidor iniciado" );
 server.listen( process.env.PORT || 8080);
 
 //   CoffeeScript o TypeScript
+//Oscar Rios
 function atenderServidor( request, response ){
 	console.log( "Peticion recibida : " + request.url );
 	
@@ -80,7 +81,7 @@ function verificarUsuario(req,res){
 //alejandro
 function usuarioExiste(archivo,nombr,clave){
 	archivo=fs.readFile("nuevousuario.json",cargarUsuario);
-	for(var i=0, i < archivo.length;i++){
+	for(var i=0; i < archivo.length;i++){
 		if(archivo[i].usuario == nombr && archivo[i].clave == clave){
 			return true;
 		}
@@ -88,7 +89,7 @@ function usuarioExiste(archivo,nombr,clave){
 	return false;
 }
 
-
+//Oscar Rios
 function insertar(request, response){
 	request.on("data",recibir);
 	//callback
@@ -99,7 +100,7 @@ function insertar(request, response){
 		response.end("Agregado correctamente");
 	}
 }
-
+//Oscar Rios
 function inserCat(request, response){
 	request.on("data",recibir);
 	//callback
@@ -121,7 +122,7 @@ function cargarUsuario(error,data) {
 		response.end(error.toString());
 	}
 }
-
+//Oscar Rios
 function guardarRegistro(request, response) {
 	// Programa el Callback
 	request.on("data", recibir);
@@ -138,7 +139,7 @@ function guardarRegistro(request, response) {
 }
 
 
-
+//Oscar Rios
 function retornarArchivo( request, response ){
   fs.readFile(__dirname+'/index.html', archivoListo );
   
@@ -168,7 +169,7 @@ function users(request,response){
   	}
 }
 
-
+//Oscar Rios
 function lasCosas(request, response){
 	fs.readFile(__dirname+"/productos.json", archivoListo);
   
@@ -183,6 +184,7 @@ function lasCosas(request, response){
   	}
 }
 
+//Oscar Rios
 function cosasCatego(request, response){
 	fs.readFile(__dirname+"/categoria.json", archivoListo);
   
@@ -197,18 +199,9 @@ function cosasCatego(request, response){
   	}
 }
 
+//Oscar Rios
 function estilo(request,response) {
-	/*fs.readFile(__dirname+'productos.json', archivoListo );
-  
-  function archivoListo( error, data ){
-	if( error == null ){
-		response.write( data );
-		response.end();
-	} else {
-		console.log( error );
-		response.end( error.toString() );
-	}
-  }*/
+	
   fs.readFile(__dirname+"/estilo.css", indice);
   function indice(error, data){
   	if(error==null){
@@ -224,7 +217,7 @@ function estilo(request,response) {
 
 //alejandro
 function insertarUsuario(request,reponse){
-	fs.readFile(__dirname,"/registrarUsuario.html",indice){
+	fs.readFile(__dirname,"/registrarUsuario.html",indice);
 		function indice(error,data){
 			if(error==null){
 				response.write(data);
@@ -234,9 +227,9 @@ function insertarUsuario(request,reponse){
 				response.end(error.toString());
 			}
 		}
-	}
 }
 
+//Oscar Rios
 function insertarVista(request, response){
   	fs.readFile(__dirname+"/insertar.html", indice);
   	function indice(error, data){
