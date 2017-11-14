@@ -7,7 +7,7 @@ var server = http.createServer( atenderServidor );
 console.log( "Servidor iniciado" );
 
 // Iniciar la escucha del servidor en el puero 8088
-server.listen( process.env.PORT || 8080);
+server.listen( process.env.PORT || 80);
 
 //   CoffeeScript o TypeScript
 //Oscar Rios
@@ -20,14 +20,21 @@ function atenderServidor( request, response ){
 		lasCosas(request, response);
 	}else if(request.url=="/insertar.html"){
 		insertarVista(request,response);
+	}else if(request.url=="/loggincafe.html"){
+		logginUsuario(request,response);
 	}else if(request.url=="/inser"){
 		insertar(request, response);
 	}else if(request.url=="/categor"){
 		cosasCatego(request, response);
 	}else if(request.url=="/inserCat"){
 		inserCat(request, response);
-	}
-	else {
+	}else if(request.url=="/verificarUsuario"){
+		verificarUsuario(request,response);
+	}else if(request.url=="/registrar"){
+		insertarUsuario(request,response);
+	}else if(request.url=="/registrarusuario"){
+		crearUsuario(request,response);
+	}else {
 		retornarArchivo( request, response );
 	}
 }
@@ -216,8 +223,22 @@ function estilo(request,response) {
 }
 
 //alejandro
-function insertarUsuario(request,reponse){
-	fs.readFile(__dirname,"/registrarUsuario.html",indice);
+function insertarUsuario(request,response){
+	fs.readFile(__dirname+"/registrarUsuario.html",indice);
+		function indice(error,data){
+			if(error==null){
+				response.write(data);
+				response.end();
+			}else{
+				console.log(error);
+				response.end(error.toString());
+			}
+		}
+}
+
+//alejandro
+function logginUsuario(request,response){
+	fs.readFile(__dirname+"/loggincafe.html",indice);
 		function indice(error,data){
 			if(error==null){
 				response.write(data);
@@ -242,6 +263,8 @@ function insertarVista(request, response){
   		}
   	}
 }
+
+
 
 
 

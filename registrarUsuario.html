@@ -1,0 +1,123 @@
+<html> 
+  <head>
+    <title>El cafetero</title>
+	<link rel="stylesheet" type="text/css" href="estilo.css">
+	<meta charset="utf-8">
+    <style>
+
+
+</style>
+
+<script type="text/javascript">
+	// Declarar un objeto
+	
+	function SalvarCampos(){
+		var usuario = {};
+		usuario.nombre = document.getElementById( "nombre" ).value ;
+		usuario.usuario = document.getElementById( "email" ).value ;
+		usuario.clave = document.getElementById( "clave" ).value ;
+		
+		return usuario;
+		
+		
+	}
+	
+	function verificarContraseñas(){
+		var clave1 = document.getElementById("clave").value;// guarda el valor del input clave en una variable
+		var clave2 = document.getElementById("verifica").value;//guarda el valor del input verificar en una variable
+		
+		if(clave1.length>=6 && clave2.lenght>=6){// verifica si las variables de las claves tienen un tamaño mayor o igual a 6
+			for(var i=0;i<clave1.length;i++){//recorre el arrglo de la clave 1
+				
+				if(clave1[i] != clave2[i] ){// verifica la igualdad de cada caracter de las 2 variables
+					return false;//si es diferente retorna falso
+				}
+			
+			}
+		
+		}else{
+			return false;//si la clave es menor a 6 caracteres retorna falso
+		}
+		return true;//retorna true si las claves estan correctamente ingrsadas
+	}
+	
+	function Registrar(){
+	
+		var verificado = verificarContraseñas();// guarda el valor de la funcion verificar contraseñas en una variable (TRUE o FALSE)
+		if(verificado == true){//si los campos estan ingresados correctamente procede a registrar a el usuario
+		
+			var usuario=SalvarCampos();			
+			var serializado = "";
+			// Serializar el objeto como una cadena de texto JSON
+			serializado = JSON.stringify( usuario );
+			
+
+			var xmlhttp = new XMLHttpRequest();
+			// Direccion donde se van a enviar los datos
+			var url = "/registrarusuario";
+			// Callback que se llama cuando termine la petición
+			xmlhttp.onreadystatechange = function() {
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				// Aqui puede mostrar un mensaje cuando termine de enviar los datos
+					alert("Bienvenido");
+				}
+				if (xmlhttp.readyState == 4 && xmlhttp.status != 200) {
+				// Aqui puede mostrar un mensaje cuando ocurra un error
+					alert("usuario incorrecto");
+				}
+			};
+			// Inicia la conexión
+			xmlhttp.open("POST", url, false);
+			// Envia la petición
+			// el parametro del metodo send() es el content de la peticion (request)
+			// objetoAEnviar es el objeto que queremos enviar al servidor
+			xmlhttp.send(serializado);
+		}else{
+			alert("Debe ingresar correctamente los campos");
+		}
+
+	}
+	
+</script>
+
+  </head>
+  <body >
+  <div id="laterales">.</div>
+  <div id="registro">
+    <h1>Registrese</h1>
+
+  <form action="#" >
+
+    <p>
+    <label>
+      Ingrese su Nombre 
+    </label>
+      <input type="text" id="nombre">
+	</p>
+	<p>
+    <label>
+      Ingrese su Email
+    </label>
+      <input type="text" id="email">
+
+	</p>
+	<p>
+	  <label>
+      Escriba una contraseña
+    </label>
+      <input type="password" id="clave" >
+
+	</p>
+	<p>
+	  <label>
+      Confirme su contraseña
+    </label>
+      <input type="password" id="verifica" >
+  </p>
+</form>
+
+	<button id="guardar" onclick="Registrar()"  >Registrar</button>
+  </div>
+  <div id=lateralD"></div>
+  </body>
+</html>

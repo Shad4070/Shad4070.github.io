@@ -18,27 +18,38 @@
 			//console.log(JSON.stringify([user, contraseña,email]));
 			return usuarios;
 		}
-		function registrar() {
+		
+		function Ingresar(){
+		// Arma un objeto con los dato singresados por el usuario
+		var usuario=SalvarCampos();
+		
+		var serializado = "";
+		// Serializar el objeto como una cadena de texto JSON
+		serializado = JSON.stringify( usuario );
+		window.alert( serializado );
 
-			if (datos()){
-				console.log("el usuario ya existe");
-				alert("el usuario ya existe")
-
+		var xmlhttp = new XMLHttpRequest();
+		// Direccion donde se van a enviar los datos
+		var url = "/verificarUsuario";
+		// Callback que se llama cuando termine la petición
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			// Aqui puede mostrar un mensaje cuando termine de enviar los datos
+				alert("Bienvenido");
 			}
-			else{
-			var user = guardar();
-
-			var serializado = "";
-			serializado = JSON.stringify(user);
-
-			var request = new XMLHttpRequest();
-
-			request.open("POST","/registro",false);
-			request.send(serializado);
-			// body...
-			console.log("completado correctamente");
-		   }
-		}
+			if (xmlhttp.readyState == 4 && xmlhttp.status != 200) {
+			// Aqui puede mostrar un mensaje cuando ocurra un error
+				alert("usuario incorrecto");
+			}
+		};
+		// Inicia la conexión
+		xmlhttp.open("POST", url, true);
+		// Envia la petición
+		// el parametro del metodo send() es el content de la peticion (request)
+		// objetoAEnviar es el objeto que queremos enviar al servidor
+		xmlhttp.send(serializado);
+	}
+		
 
 		function cargarDatos() {
 	      var xml = new XMLHttpRequest();
@@ -80,7 +91,7 @@
 		<label>email:</label>
 		<input type="text" id="txt_email">
 	 </p>
-	 <button onclick="registrar()">ingresar</button>
+	 <button onclick="Ingresar()">ingresar</button>
  </div>
  <div id=lateralD"></div>
 </body>

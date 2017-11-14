@@ -65,7 +65,13 @@ textarea{
 	height: -webkit-fill-available;
 	border-left-style: double;
 }
-
+#registro{
+	display: grid;
+	background-color: burlywood;
+	width: 950px;
+	height: -webkit-fill-available;
+	border-left-style: double;
+}
 #VentaCliente{
 	display: grid;
 	background-color: burlywood;
