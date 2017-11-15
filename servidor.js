@@ -35,7 +35,7 @@ function atenderServidor( request, response ){
 	}else if(request.url=="/registrarusuario"){
 		crearUsuario(request,response);
 	}else {
-		retornarArchivo( request, response );
+		logginUsuario( request, response );
 	}
 }
 //Vector que va a almacenar los usuarios registrados
@@ -148,6 +148,21 @@ function guardarRegistro(request, response) {
 
 //Oscar Rios
 function retornarArchivo( request, response ){
+  fs.readFile(__dirname+'/loggincafe.html', archivoListo );
+  
+  function archivoListo( error, data ){
+	if( error == null ){
+		response.write( data );
+		response.end();
+	} else {
+		console.log( error );
+		response.end( error.toString() );
+	}
+  }
+}
+
+//Oscar Rios
+function alIndex( request, response ){
   fs.readFile(__dirname+'/index.html', archivoListo );
   
   function archivoListo( error, data ){
