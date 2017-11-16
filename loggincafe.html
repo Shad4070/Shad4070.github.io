@@ -13,29 +13,32 @@
 		function guardar() {
 			var usuarios = {};
 			usuarios.usuario = document.getElementById('txt_user').value;
-			usuarios.contraseña = document.getElementById('txt_password').value;
-			usuarios.email = document.getElementById('txt_email').value;
+			usuarios.clave = document.getElementById('txt_password').value;
+			usuarios.correo = document.getElementById('txt_email').value;
 			//console.log(JSON.stringify([user, contraseña,email]));
 			return usuarios;
 		}
 		
 		function Ingresar(){
 		// Arma un objeto con los dato singresados por el usuario
-		var usuario=SalvarCampos();
+		var usuario=guardar();
 		
 		var serializado = "";
 		// Serializar el objeto como una cadena de texto JSON
 		serializado = JSON.stringify( usuario );
-		window.alert( serializado );
+		
 
 		var xmlhttp = new XMLHttpRequest();
 		// Direccion donde se van a enviar los datos
+		
 		var url = "/verificarUsuario";
+		
 		// Callback que se llama cuando termine la petición
 		xmlhttp.onreadystatechange = function() {
 			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			// Aqui puede mostrar un mensaje cuando termine de enviar los datos
 				alert("Bienvenido");
+				location.href="index.html"
 			}
 			if (xmlhttp.readyState == 4 && xmlhttp.status != 200) {
 			// Aqui puede mostrar un mensaje cuando ocurra un error

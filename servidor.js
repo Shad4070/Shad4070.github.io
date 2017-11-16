@@ -46,6 +46,12 @@ var productos=[];
 var categorias=[];
 
 
+var users=[
+	{usuario:"alejandro1995",clave:"alejandro2426",correo:"madridu42@hotmail.com"},
+	{usuario:"williamdsw",clave:"dsw2426",correo:"wdvelasques@udem.edu.co"}
+]
+
+
 
 var s = fs.readFile("productos.json",cargarUsuario);
 var a=fs.readFile("categoria.json",cargarUsuario);
@@ -58,11 +64,12 @@ function crearUsuario(request,response){
 		request.on("data",recibir);
 		
 		function recibir(data){
-			var pro=JSON.parse(data);
-			auxusers.push(pro);
-			fs.writeFile("nuevousuario.json", JSON.stringify(auxusers),null);
+			var usr=JSON.parse(data);
+			console.log(usr);
+			users.push(usr);
+			fs.writeFile("nuevousuario.json", JSON.stringify(users), null);
+			console.log(users);
 			response.end("Usuario registrado correctamente");
-			
 		}
 		
 	}else{
@@ -75,7 +82,8 @@ function verificarUsuario(req,res){
 	req.on('data',datosListos);
 	function datosListos(content){
 		var usr=JSON.parse(content);
-		if(usuarioExiste(usr.email,usr.clave)){
+		console.log(usr);
+		if(usuarioExiste(usr.usuario,usr.clave,usr.correo)){
 			res.writeHead(200,{ 'content-type ': 'text/html'});
 			res.end( "usuario correcto");
 		}else{
@@ -86,10 +94,9 @@ function verificarUsuario(req,res){
 }
 
 //alejandro
-function usuarioExiste(archivo,nombr,clave){
-	archivo=fs.readFile("nuevousuario.json",cargarUsuario);
-	for(var i=0; i < archivo.length;i++){
-		if(archivo[i].usuario == nombr && archivo[i].clave == clave){
+function usuarioExiste(nombr,clave,correo){
+	for(var i=0; i < users.length;i++){
+		if(users[i].usuario == nombr && users[i].clave == clave && users[i].correo==correo){
 			return true;
 		}
 	}

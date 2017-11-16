@@ -13,37 +13,36 @@
 	
 	function SalvarCampos(){
 		var usuario = {};
-		usuario.nombre = document.getElementById( "nombre" ).value ;
-		usuario.usuario = document.getElementById( "email" ).value ;
+		usuario.correo = document.getElementById( "email" ).value ;
+		usuario.usuario = document.getElementById( "nombre").value ;
 		usuario.clave = document.getElementById( "clave" ).value ;
 		
 		return usuario;
-		
-		
 	}
 	
-	function verificarContraseñas(){
+	function verificarContra(){
 		var clave1 = document.getElementById("clave").value;// guarda el valor del input clave en una variable
 		var clave2 = document.getElementById("verifica").value;//guarda el valor del input verificar en una variable
 		
-		if(clave1.length>=6 && clave2.lenght>=6){// verifica si las variables de las claves tienen un tamaño mayor o igual a 6
-			for(var i=0;i<clave1.length;i++){//recorre el arrglo de la clave 1
-				
-				if(clave1[i] != clave2[i] ){// verifica la igualdad de cada caracter de las 2 variables
-					return false;//si es diferente retorna falso
-				}
-			
+		if(clave1.length>=6){
+			console.log("clave1 mayor");
+			if(clave2.length>=6){
+			 console.log("clave2 mayor");
+			  if(clave1 == clave2){
+			   console.log("claves iguales");
+			    return true;
+			  }
 			}
-		
-		}else{
-			return false;//si la clave es menor a 6 caracteres retorna falso
 		}
-		return true;//retorna true si las claves estan correctamente ingrsadas
+		
+		return false;
+	
 	}
+	
 	
 	function Registrar(){
 	
-		var verificado = verificarContraseñas();// guarda el valor de la funcion verificar contraseñas en una variable (TRUE o FALSE)
+		var verificado = verificarContra();// guarda el valor de la funcion verificar contraseñas en una variable (TRUE o FALSE)
 		if(verificado == true){//si los campos estan ingresados correctamente procede a registrar a el usuario
 		
 			var usuario=SalvarCampos();			
@@ -59,7 +58,8 @@
 			xmlhttp.onreadystatechange = function() {
 				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 				// Aqui puede mostrar un mensaje cuando termine de enviar los datos
-					alert("Bienvenido");
+					alert("Usuario registrado correctamente");
+					location.href="index.html";
 				}
 				if (xmlhttp.readyState == 4 && xmlhttp.status != 200) {
 				// Aqui puede mostrar un mensaje cuando ocurra un error
@@ -67,7 +67,7 @@
 				}
 			};
 			// Inicia la conexión
-			xmlhttp.open("POST", url, false);
+			xmlhttp.open("POST", url, true);
 			// Envia la petición
 			// el parametro del metodo send() es el content de la peticion (request)
 			// objetoAEnviar es el objeto que queremos enviar al servidor
@@ -116,7 +116,7 @@
   </p>
 </form>
 
-	<button id="guardar" onclick="Registrar()"  >Registrar</button>
+	<button id="guardar" onclick="Registrar()">Registrar</button>
   </div>
   <div id=lateralD"></div>
   </body>
