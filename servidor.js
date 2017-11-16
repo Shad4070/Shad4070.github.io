@@ -34,7 +34,9 @@ function atenderServidor( request, response ){
 		insertarUsuario(request,response);
 	}else if(request.url=="/registrarusuario"){
 		crearUsuario(request,response);
-	}else {
+	}else if(request.url=="/index.html"){
+		alIndex(request,response);
+	}else{
 		logginUsuario( request, response );
 	}
 }
@@ -84,7 +86,7 @@ function verificarUsuario(req,res){
 		var usr=JSON.parse(content);
 		console.log(usr);
 		if(usuarioExiste(usr.usuario,usr.clave,usr.correo)){
-			res.writeHead(200,{ 'content-type ': 'text/html'});
+			res.writeHead(200,{ 'content-type': 'text/html'});
 			res.end( "usuario correcto");
 		}else{
 			res.writeHead(401, { 'content-type': 'text/html' });
