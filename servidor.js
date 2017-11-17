@@ -13,7 +13,7 @@ server.listen( process.env.PORT || 80);
 //Oscar Rios
 function atenderServidor( request, response ){
 	console.log( "Peticion recibida : " + request.url );
-	
+
 	 if( request.url == "/estilo.css"){
         estilo(request,response);
 	}else if (request.url == "/productos") {
@@ -36,6 +36,12 @@ function atenderServidor( request, response ){
 		crearUsuario(request,response);
 	}else if(request.url=="/index.html"){
 		alIndex(request,response);
+	}else if(request.url=="/buscarNombre"){
+		alIndex(request,response);
+	}else if(request.url=="/buscarId"){
+		alIndex(request,response);
+	}else if(request.url=="/buscar.html"){
+		buscarVista(request,response);
 	}else{
 		logginUsuario( request, response );
 	}
@@ -61,10 +67,10 @@ var a=fs.readFile("categoria.json",cargarUsuario);
 //alejandro
 function crearUsuario(request,response){
 	var existe = usuarioExiste();
-	
+
 	if(existe == false){
 		request.on("data",recibir);
-		
+
 		function recibir(data){
 			var usr=JSON.parse(data);
 			console.log(usr);
@@ -73,7 +79,7 @@ function crearUsuario(request,response){
 			console.log(users);
 			response.end("Usuario registrado correctamente");
 		}
-		
+
 	}else{
 		alert("el usuario ya existe");
 	}
@@ -138,6 +144,18 @@ function cargarUsuario(error,data) {
 		response.end(error.toString());
 	}
 }
+
+function cargarProductos(error,data){
+	if(error == null){
+		productos = JSON.parce(data);
+		console.log("los productis registrados son: ");
+		console.log(productos);
+	}else{
+		console.log(error);
+		response.end(error.toString());
+	}
+}
+
 //Oscar Rios
 function guardarRegistro(request, response) {
 	// Programa el Callback
@@ -158,7 +176,7 @@ function guardarRegistro(request, response) {
 //Oscar Rios
 function retornarArchivo( request, response ){
   fs.readFile(__dirname+'/loggincafe.html', archivoListo );
-  
+
   function archivoListo( error, data ){
 	if( error == null ){
 		response.write( data );
@@ -173,7 +191,7 @@ function retornarArchivo( request, response ){
 //Oscar Rios
 function alIndex( request, response ){
   fs.readFile(__dirname+'/index.html', archivoListo );
-  
+
   function archivoListo( error, data ){
 	if( error == null ){
 		response.write( data );
@@ -188,7 +206,7 @@ function alIndex( request, response ){
 //alejandro
 function users(request,response){
 	fs.readFile(__dirname+"/nuevousuario.json", archivoListo);
-  
+
  	 function archivoListo( error, data ){
 		if( error == null ){
 			response.write( data );
@@ -203,7 +221,7 @@ function users(request,response){
 //Oscar Rios
 function lasCosas(request, response){
 	fs.readFile(__dirname+"/productos.json", archivoListo);
-  
+
  	 function archivoListo( error, data ){
 		if( error == null ){
 			response.write( data );
@@ -218,7 +236,7 @@ function lasCosas(request, response){
 //Oscar Rios
 function cosasCatego(request, response){
 	fs.readFile(__dirname+"/categoria.json", archivoListo);
-  
+
  	 function archivoListo( error, data ){
 		if( error == null ){
 			response.write( data );
@@ -232,7 +250,7 @@ function cosasCatego(request, response){
 
 //Oscar Rios
 function estilo(request,response) {
-	
+
   fs.readFile(__dirname+"/estilo.css", indice);
   function indice(error, data){
   	if(error==null){
@@ -288,12 +306,16 @@ function insertarVista(request, response){
   	}
 }
 
-
-
-
-
-
-
-
-
-
+//Luis Lopez
+	function buscarVista(request, response){
+	  	fs.readFile(__dirname+"/buscar.html", indice);
+	  	function indice(error, data){
+	  		if(error==null){
+	  			response.write(data);
+	  			response.end();
+	  		}else{
+	  			console.log(error);
+	  			response.end(error.toString());
+	  		}
+	  	}
+		}
