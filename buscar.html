@@ -9,7 +9,7 @@
 		function Volver(){
 			location.href="index.html";
 		}
-
+//Luis Felipe Lopez Morales
 		function traerProductos(){
 					var xml = new XMLHttpRequest();
 					xml.open("GET","/productos",false);
@@ -18,12 +18,13 @@
 					console.log(datos);
 				return JSON.parse(datos);
 			}
+//Luis Felipe Lopez Morales
 		function mostrar(producto){
 
 			alert("Nombre: " + producto.nombre + ", Codigo: " + producto.codigo +
 			", Precio: " + producto.precio + "\nCategoria: " + producto.categoria +
 			", Cantidad: " + producto.cantidad);
-
+//Luis Felipe Lopez Morales
 		}
 		function buscarNombre(){
 			var nombre = document.getElementById('nomBus').value;
@@ -47,7 +48,7 @@
 			alert("No existe un producto con este nombre: " + nombre);
 		}
 		}
-
+//Luis Felipe Lopez Morales
 		function buscarId(){
 			var productos = traerProductos();
 			var codigo = document.getElementById('codBus').value;

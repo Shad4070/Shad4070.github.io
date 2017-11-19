@@ -42,6 +42,8 @@ function atenderServidor( request, response ){
 		alIndex(request,response);
 	}else if(request.url=="/buscar.html"){
 		buscarVista(request,response);
+	}else if(request.url=="/registrarUsuario.html"){
+		buscarVista(request,response);
 	}else{
 		logginUsuario( request, response );
 	}
@@ -319,3 +321,15 @@ function insertarVista(request, response){
 	  		}
 	  	}
 		}
+		function buscarVista(request, response){
+		  	fs.readFile(__dirname+"/registrarUsuario.html", indice);
+		  	function indice(error, data){
+		  		if(error==null){
+		  			response.write(data);
+		  			response.end();
+		  		}else{
+		  			console.log(error);
+		  			response.end(error.toString());
+		  		}
+		  	}
+			}

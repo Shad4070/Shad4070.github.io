@@ -6,7 +6,7 @@
 	<meta charset="utf-8">
 
 	<style type="text/css">
-       
+
 	</style>
 
 	<script type="text/javascript">
@@ -18,21 +18,28 @@
 			//console.log(JSON.stringify([user, contraseña,email]));
 			return usuarios;
 		}
-		
+				function cambiarRegistrar(){
+				   location.href="registrarUsuario.html"
+				}
+		function alerta(){
+			alert("Oscar Rios Tabares - Alejandro Madrid - Luis Felipe Lopez")
+			alert("Proposito: el proposito de la aplicacion es brindarle a el almacen el cafetero la posibilidad de hacer el total control de inventario por medio de la pagina web")
+			alert("Temas usados: de lo visto en clase usamos protocolo http,xmlhttp,node.js,CSS,javascript,html")
+		}
 		function Ingresar(){
 		// Arma un objeto con los dato singresados por el usuario
 		var usuario=guardar();
-		
+
 		var serializado = "";
 		// Serializar el objeto como una cadena de texto JSON
 		serializado = JSON.stringify( usuario );
-		
+
 
 		var xmlhttp = new XMLHttpRequest();
 		// Direccion donde se van a enviar los datos
-		
+
 		var url = "/verificarUsuario";
-		
+
 		// Callback que se llama cuando termine la petición
 		xmlhttp.onreadystatechange = function() {
 			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -52,7 +59,7 @@
 		// objetoAEnviar es el objeto que queremos enviar al servidor
 		xmlhttp.send(serializado);
 	}
-		
+
 
 		function cargarDatos() {
 	      var xml = new XMLHttpRequest();
@@ -95,7 +102,10 @@
 		<input type="text" id="txt_email">
 	 </p>
 	 <button onclick="Ingresar()">ingresar</button>
+	 <button onclick="cambiarRegistrar()">¿No tienes un usuario? Registrate</button>
+	 	 <button id="acerca" onclick="alerta()">Acerca de...</button>
  </div>
- <div id=lateralD"></div>
+
+ <div id=lateralD></div>
 </body>
 </html>
